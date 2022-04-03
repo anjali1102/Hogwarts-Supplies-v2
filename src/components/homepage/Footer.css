@@ -1,0 +1,139 @@
+:root {
+  --white: #fff;
+  --offwhite: #f5f5f5;
+  --dark-gray: #a9a9a9;
+  --light-gray: #d1d1d1;
+  --dark: #383838;
+  --header-height: 3rem;
+  --font-semi: 600;
+  --font-bold: 700;
+  --first-color: #e55947;
+  --first-color-alt: #e45c4a;
+  --white-color: #fafafa;
+  --light-gray: #f5f5f5;
+  --dark-color: #101010;
+  --dark-color-light: #606060;
+  --grey-color: #f0f1f3;
+  --green: #26bd65;
+  --dank-green: #377953;
+  --body-font: "Open Sans", sans-serif;
+  --big-font-size: 3rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.75rem;
+  --mb-1: 0.5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+  --z-index: 10;
+  --z-fixed: 100;
+}
+
+.navbar_container {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--light-gray);
+  z-index: 9;
+}
+
+.navbar_main {
+  padding: 0.62rem 10vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  height: 3.75rem;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  width: 25rem;
+  display: flex;
+}
+
+@media screen and (max-width: 48rem) {
+  .search {
+    display: none;
+  }
+}
+
+.search-box {
+  width: 60%;
+  height: 2.5rem;
+  padding: 0.625rem;
+  border-top-left-radius: 0.625rem;
+  border-bottom-left-radius: 0.625rem;
+  border: 1px solid var(--dark-gray);
+  text-transform: capitalize;
+  background: none;
+  outline: none;
+}
+
+.search-btn {
+  width: 20%;
+  height: 2.5rem;
+  padding: 0.62rem 1.25rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: var(--dark);
+  color: var(--white);
+  text-transform: capitalize;
+  font-size: 0.938rem;
+  border-top-right-radius: 0.625rem;
+  border-bottom-right-radius: 0.625rem;
+}
+
+.search-box::placeholder {
+  color: var(--dark-gray);
+}
+
+.nav-items a {
+  margin-left: 1.25rem;
+}
+
+.nav-items a img {
+  width: 1.875rem;
+}
+
+.footer {
+  background-color: var(--grey-color);
+  margin-top: 16px;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  background-color: var(--grey-color);
+  margin-top: 16px;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer > ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.f-connectme {
+  color: var(--dank-green);
+  margin-top: 4px;
+  margin-bottom: 4px;
+  gap: 4px;
+}
+
