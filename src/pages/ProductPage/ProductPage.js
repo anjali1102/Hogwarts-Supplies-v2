@@ -1,14 +1,10 @@
 import React from "react";
 import { products } from "../../backend/db/products";
-import { Footer } from "../../components/homepage/Footer";
-import { Navbar } from "../../components/homepage/Navbar";
 import "./ProductPage.css";
 
 const ProductPage = () => {
   return (
     <>
-      <Navbar />
-      {/* left section filter by categories */}
       <main className="main-product">
         <div className="filter-wrapper">
           <div className="filter-header">
@@ -125,8 +121,6 @@ const ProductPage = () => {
         </div>
 
         {/* right section display cards */}
-
-        {/* <h2>Featured Products</h2> */}
         <div className="featured__container bd-grid">
           {products.map((item) => {
             const { img, badge, title, discountPrice, price, offerPercent } =
@@ -157,7 +151,6 @@ const ProductPage = () => {
           })}
         </div>
       </main>
-      <Footer />
     </>
   );
 };

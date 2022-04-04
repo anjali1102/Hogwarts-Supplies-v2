@@ -1,10 +1,3 @@
-:root {
-  --green: #26bd65;
-  --dank-green: #377953;
-  --dark: #383838;
-  --white: #fff;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -33,7 +26,7 @@ ul.menu {
   gap: 2rem;
   position: sticky;
   top: 90px;
-  /* left: 0; */
+  left: 0;
 }
 
 .priceSlider {
@@ -69,16 +62,6 @@ ul.menu {
 .product-wrapper {
   width: 100%;
 }
-
-/* .bd-grid {
-  max-width: 64rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  grid-column-gap: 2rem;
-  width: calc(100% - 3rem);
-  margin-left: var(--mb-3);
-  margin-right: var(--mb-3);
-} */
 
 .card-vertical {
   height: 28rem;

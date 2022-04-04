@@ -1,15 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { products } from "../../backend/db/products";
 import "./FeatureProducts.css";
+import { products } from "../../backend/db/products";
 
 const FeatureProducts = () => {
   return (
     <section className="featured section" id="featured">
       <h2 className="section-title">FEATURED PRODUCTS</h2>
-      <Link to="/product" className="section-all">
+      <a href="/product" className="section-all">
         <span className="goto-products">VIEW ALL</span>
-      </Link>
+      </a>
 
       <div className="featured__container bd-grid">
         {products.map((item) => {
@@ -44,4 +43,4 @@ const FeatureProducts = () => {
   );
 };
 
-export default FeatureProducts;
+export { FeatureProducts };

@@ -5,13 +5,13 @@ const Navbar = () => {
   return (
     <nav className="navbar_container">
       <div className="navbar_main">
-        <a href="/">
+        <Link to="/">
           <img
             src="/img/Hogwarts Supplies.png"
             className="brand-logo"
             alt="logo"
           />
-        </a>
+        </Link>
         <div className="nav-items">
           <div className="search">
             <input type="text" className="search-box" placeholder="search" />
@@ -22,12 +22,12 @@ const Navbar = () => {
           <Link to="/wishlist">
             <img src="/img/heart.png" alt="heart" />
           </Link>
-          <a href="/pages/login.html">
+          <Link to="/login">
             <img src="/img/user.png" alt="user" />
-          </a>
-          <a href="/pages/cart.html">
+          </Link>
+          <Link to="/cart">
             <img src="/img/cart.png" alt="cart" />
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

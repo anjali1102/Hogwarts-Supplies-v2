@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./HeroSection.css";
 
 const HeroSection = () => {
@@ -8,13 +9,12 @@ const HeroSection = () => {
         <div className="home__container">
           <div className="home__data">
             <h1 className="home__title">
-              <p>NEW</p>
-              <br />
+              <p style={{ lineHeight: "2rem" }}>NEW</p>
               <span>ARRIVALS</span>
             </h1>
-            <a href="/product" className="button">
+            <Link to="/product" className="button">
               GO SHOPPING
-            </a>
+            </Link>
           </div>
           <img src="img/harry.gif" alt="home image" className="home__img" />
         </div>
@@ -32,24 +32,22 @@ const HeroSection = () => {
             <div className="collection__data">
               <h2 className="collection__title">
                 <span className="collection__subtitle">Men</span>
-                <br />
-                PRODUCTS
+                <div>PRODUCTS</div>
               </h2>
-              <a href="/product" className="collection__view">
+              <Link to="/product" className="collection__view">
                 View collection
-              </a>
+              </Link>
             </div>
           </div>
           <div className="collection__box">
             <div className="collection__data">
               <h2 className="collection__title">
                 <span className="collection__subtitle">Women</span>
-                <br />
-                PRODUCTS
+                <div>PRODUCTS</div>
               </h2>
-              <a href="/product" className="collection__view">
+              <Link to="/product" className="collection__view">
                 View collection
-              </a>
+              </Link>
             </div>
             <img src="img/bg.gif" alt="women gif" className="collection__img" />
           </div>

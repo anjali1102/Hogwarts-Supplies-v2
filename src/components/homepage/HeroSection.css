@@ -36,10 +36,6 @@
   color: var(--dark-color);
 }
 
-.collection__view:hover {
-  text-decoration: underline;
-}
-
 .home__data {
   padding-top: 6rem;
   flex: 1;
@@ -109,3 +105,4 @@ img {
 .button:hover {
   background-color: var(--dank-green);
 }
+
