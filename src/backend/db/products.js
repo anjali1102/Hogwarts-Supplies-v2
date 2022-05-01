@@ -14,6 +14,8 @@ export const products = [
     discountPrice: "500",
     price: "1000",
     offerPercent: "50%",
+    category: "Tshirt",
+    ratings: "3.5"
   },
   {
     _id: uuid(),
@@ -23,6 +25,8 @@ export const products = [
     discountPrice: "1000",
     price: "1500",
     offerPercent: "50%",
+    category: "Acessories",
+    ratings: "4.5"
   },
   {
     _id: uuid(),
@@ -32,6 +36,8 @@ export const products = [
     discountPrice: "300",
     price: "600",
     offerPercent: "50%",
+    category: "Acessories",
+    ratings: "5"
   },
   {
     _id: uuid(),
@@ -41,6 +47,8 @@ export const products = [
     discountPrice: "1500",
     price: "2000",
     offerPercent: "50%",
+    category: "Acessories",
+    ratings: "2"
   },
   {
     _id: uuid(),
@@ -50,6 +58,8 @@ export const products = [
     discountPrice: "1500",
     price: "2500",
     offerPercent: "50%",
+    category: "Toys",
+    ratings: "1"
   },
   {
     _id: uuid(),
@@ -59,6 +69,8 @@ export const products = [
     discountPrice: "500",
     price: "1000",
     offerPercent: "50%",
+    category: "Acessories",
+    ratings: "1.5"
   },
   {
     _id: uuid(),
@@ -68,5 +80,7 @@ export const products = [
     discountPrice: "500",
     price: "1000",
     offerPercent: "50%",
+    category: "Acessories",
+    ratings: "3.5"
   },
 ];

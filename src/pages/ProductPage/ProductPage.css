@@ -67,6 +67,15 @@ ul.menu {
   height: 28rem;
 }
 
+.fa-heart {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  margin: 5px 5px 0 0;
+  color: rgb(219, 215, 210);
+  font-size: 2rem;
+}
+
 .btn.btn-success {
   background-color: var(--green);
 }
