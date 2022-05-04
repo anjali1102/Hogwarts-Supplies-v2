@@ -1,5 +1,4 @@
 const filterByRating = (products, rating) => {
-    console.log("filterByRating working")
   switch (rating) {
     case "1-AND-ABOVE":
       return products.filter(({ ratings }) => Number(ratings) >= 1);

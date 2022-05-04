@@ -64,7 +64,8 @@ ul.menu {
 }
 
 .card-vertical {
-  height: 28rem;
+  height: fit-content;
+  padding-block: 0.4rem;
 }
 
 .fa-heart {

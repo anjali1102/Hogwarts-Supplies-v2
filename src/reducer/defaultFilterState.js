@@ -4,10 +4,10 @@ import { getMinMaxPrice } from "../utils/minMaxPrice";
 const { maxPrice } = getMinMaxPrice(products);
 
 const defaultFilterState = {
-  instockChecked: false,
-  infastDeliveryChecked: false,
-  sortby: "HIGH-TO-LOW",
   priceSlider: maxPrice,
+  category: [],
+  rating: "1-AND-ABOVE",
+  sortby: "HIGH-TO-LOW",
 };
 
 export { defaultFilterState };

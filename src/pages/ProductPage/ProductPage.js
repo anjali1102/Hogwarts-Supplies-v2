@@ -1,5 +1,4 @@
 import React, { useReducer } from "react";
-import { products } from "../../backend/db/products";
 import "./ProductPage.css";
 import { defaultFilterState } from "../../reducer/defaultFilterState";
 import { filterReducer } from "../../reducer/filterReducer";
@@ -7,19 +6,30 @@ import { getMinMaxPrice } from "../../utils/minMaxPrice";
 import { filterbySort } from "../../utils/filterbySort";
 import { filterByPriceRange } from "../../utils/filterByPriceRange";
 import { filterByRating } from "../../utils/filterByRating";
-
-const { minPrice, maxPrice } = getMinMaxPrice(products);
+import { filterByCategory } from "../../utils/filterByCategory";
+import { useEffect, useState } from "react";
 
 const ProductPage = () => {
   const [state, dispatch] = useReducer(filterReducer, defaultFilterState);
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    (() => {
+      fetch("/api/products")
+        .then((res) => res.json())
+        .then((data) => setProducts(data.products));
+    })();
+  }, []);
+  const { minPrice, maxPrice } = getMinMaxPrice(products);
 
-  const { sortby, ratings, priceSlider } = state;
-
-  // const filteredProducts = filterbySort(products, sortby);
+  const { priceSlider, category, rating, sortby } = state; 
 
   const filteredBySort = filterbySort(products, sortby);
+
   const filteredByPriceRange = filterByPriceRange(filteredBySort, priceSlider);
-  const filteredProducts = filterByRating(filterByPriceRange, ratings);
+
+  const filteredByRating = filterByRating(filteredByPriceRange, rating);
+
+  const filteredProducts = filterByCategory(filteredByRating, category);
 
   return (
     <>
@@ -27,14 +37,20 @@ const ProductPage = () => {
         <div className="filter-wrapper">
           <div className="filter-header">
             <h4>Filters</h4>
-            <p>Clear</p>
+            <button
+              onClick={(e) => {
+                dispatch({ type: "CLEAR-FILTER", payload: onclick });
+              }}
+            >
+              Clear
+            </button>
           </div>
           <div className="priceSlider">
             <h3>Price</h3>
             <div className="range-gap">
               <div className="range-price">
                 <p>{minPrice}</p>
-                <p>150</p>
+                <p>{~~(maxPrice + minPrice) / 2}</p>
                 <p>{maxPrice}</p>
               </div>
               <input
@@ -55,24 +71,39 @@ const ProductPage = () => {
               <label className="select-input">
                 <input
                   type="checkbox"
-                  name="light"
+                  name="category"
+                  value="category"
                   className="checkbox-input"
+                  onChange={(e) => {
+                    dispatch({ type: "CATEGORY", payload: "Tshirt" });
+                  }}
+                  checked={category.includes("Tshirt")}
                 />
                 <span className="check-desc">Tshirt</span>
               </label>
               <label className="select-input">
                 <input
                   type="checkbox"
-                  name="light"
+                  name="category"
+                  value="category"
                   className="checkbox-input"
+                  onChange={(e) => {
+                    dispatch({ type: "CATEGORY", payload: "Toys" });
+                  }}
+                  checked={category.includes("Toys")}
                 />
                 <span className="check-desc">Toys</span>
               </label>
               <label className="select-input">
                 <input
                   type="checkbox"
-                  name="light"
+                  name="category"
+                  value="category"
                   className="checkbox-input"
+                  onChange={(e) => {
+                    dispatch({ type: "CATEGORY", payload: "Acessories" });
+                  }}
+                  checked={category.includes("Acessories")}
                 />
                 <span className="check-desc">Acessories</span>
               </label>
@@ -87,9 +118,9 @@ const ProductPage = () => {
                   name="rating"
                   className="radio-input"
                   onChange={(e) => {
-                    dispatch({ type: "RATING", payload: "4-AND-ABOVE" }); //
+                    dispatch({ type: "RATING", payload: "4-AND-ABOVE" }); 
                   }}
-                  checked={ratings === "4-AND-ABOVE"}
+                  checked={rating === "4-AND-ABOVE"}
                 />
                 <span className="check-desc">4 Stars &amp; above</span>
               </label>
@@ -99,9 +130,9 @@ const ProductPage = () => {
                   name="rating"
                   className="radio-input"
                   onChange={(e) => {
-                    dispatch({ type: "RATING", payload: "3-AND-ABOVE" }); //
+                    dispatch({ type: "RATING", payload: "3-AND-ABOVE" }); 
                   }}
-                  checked={ratings === "3-AND-ABOVE"}
+                  checked={rating === "3-AND-ABOVE"}
                 />
                 <span className="check-desc">3 Stars &amp; above</span>
               </label>
@@ -111,9 +142,9 @@ const ProductPage = () => {
                   name="rating"
                   className="radio-input"
                   onChange={(e) => {
-                    dispatch({ type: "RATING", payload: "2-AND-ABOVE" }); //
+                    dispatch({ type: "RATING", payload: "2-AND-ABOVE" });
                   }}
-                  checked={ratings === "2-AND-ABOVE"}
+                  checked={rating === "2-AND-ABOVE"}
                 />
                 <span className="check-desc">2 Stars &amp; above</span>
               </label>
@@ -123,9 +154,9 @@ const ProductPage = () => {
                   name="rating"
                   className="radio-input"
                   onChange={(e) => {
-                    dispatch({ type: "RATING", payload: "1-AND-ABOVE" }); //
+                    dispatch({ type: "RATING", payload: "1-AND-ABOVE" }); 
                   }}
-                  checked={ratings === "1-AND-ABOVE"}
+                  checked={rating === "1-AND-ABOVE"}
                 />
                 <span className="check-desc">1 Stars &amp; above</span>
               </label>
@@ -142,7 +173,6 @@ const ProductPage = () => {
                   onChange={(e) => {
                     dispatch({ type: "SORT", payload: "LOW-TO-HIGH" });
                   }}
-                  checked={sortby === "LOW-TO-HIGH"}
                 />
                 <span className="check-desc">Price - Low to High</span>
               </label>
@@ -165,9 +195,16 @@ const ProductPage = () => {
         {/* right section display cards */}
         <div className="featured__container bd-grid">
           {filteredProducts.map((item) => {
-            console.log("inside filteredProduct.map")
-            const { img, badge, title, discountPrice, price, offerPercent } =
-              item;
+            const {
+              img,
+              badge,
+              title,
+              discountPrice,
+              price,
+              offerPercent,
+              category,
+              rating,
+            } = item;
             return (
               <div key={item._id} className="featured__product">
                 <div className="card-vertical">
