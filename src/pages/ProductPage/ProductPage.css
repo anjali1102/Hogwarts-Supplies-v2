@@ -64,7 +64,17 @@ ul.menu {
 }
 
 .card-vertical {
-  height: 28rem;
+  height: fit-content;
+  padding-block: 0.4rem;
+}
+
+.fa-heart {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  margin: 5px 5px 0 0;
+  color: rgb(219, 215, 210);
+  font-size: 2rem;
 }
 
 .btn.btn-success {

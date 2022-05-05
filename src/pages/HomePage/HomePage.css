@@ -49,7 +49,7 @@ a {
 }
 
 .featured__product .card-vertical {
-  height: 100%;
+  height: fit-content;
 }
 
 .featured__product:hover {
