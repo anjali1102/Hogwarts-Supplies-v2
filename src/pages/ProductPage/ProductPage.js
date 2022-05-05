@@ -8,20 +8,21 @@ import { filterByPriceRange } from "../../utils/filterByPriceRange";
 import { filterByRating } from "../../utils/filterByRating";
 import { filterByCategory } from "../../utils/filterByCategory";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ProductPage = () => {
   const [state, dispatch] = useReducer(filterReducer, defaultFilterState);
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    (() => {
-      fetch("/api/products")
-        .then((res) => res.json())
-        .then((data) => setProducts(data.products));
+    (async () => {
+      const {data} = await axios.get("/api/products");
+      setProducts(data.products)
     })();
   }, []);
+
   const { minPrice, maxPrice } = getMinMaxPrice(products);
 
-  const { priceSlider, category, rating, sortby } = state; 
+  const { priceSlider, category, rating, sortby } = state;
 
   const filteredBySort = filterbySort(products, sortby);
 
@@ -39,7 +40,7 @@ const ProductPage = () => {
             <h4>Filters</h4>
             <button
               onClick={(e) => {
-                dispatch({ type: "CLEAR-FILTER", payload: onclick });
+                dispatch({ type: "CLEAR-FILTER", payload: e.target.value });
               }}
             >
               Clear
@@ -118,7 +119,7 @@ const ProductPage = () => {
                   name="rating"
                   className="radio-input"
                   onChange={(e) => {
-                    dispatch({ type: "RATING", payload: "4-AND-ABOVE" }); 
+                    dispatch({ type: "RATING", payload: "4-AND-ABOVE" });
                   }}
                   checked={rating === "4-AND-ABOVE"}
                 />
@@ -130,7 +131,7 @@ const ProductPage = () => {
                   name="rating"
                   className="radio-input"
                   onChange={(e) => {
-                    dispatch({ type: "RATING", payload: "3-AND-ABOVE" }); 
+                    dispatch({ type: "RATING", payload: "3-AND-ABOVE" });
                   }}
                   checked={rating === "3-AND-ABOVE"}
                 />
@@ -154,7 +155,7 @@ const ProductPage = () => {
                   name="rating"
                   className="radio-input"
                   onChange={(e) => {
-                    dispatch({ type: "RATING", payload: "1-AND-ABOVE" }); 
+                    dispatch({ type: "RATING", payload: "1-AND-ABOVE" });
                   }}
                   checked={rating === "1-AND-ABOVE"}
                 />

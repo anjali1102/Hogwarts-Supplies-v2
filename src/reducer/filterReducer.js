@@ -1,18 +1,14 @@
 import { defaultFilterState } from "./defaultFilterState";
 
 const filterReducer = (state, action) => {
+  const SORT="SORT";
   switch (action.type) {
-    case "SORT":
+    case SORT:
       return { ...state, sortby: action.payload };
-    case "IN-STOCK":
-      return { ...state, instockChecked: !state.instockChecked };
-    case "FAST-DELIVERY":
-      return { ...state, infastDeliveryChecked: !state.instockChecked };
     case "PRICE-SLIDER":
       return { ...state, priceSlider: action.payload };
     case "RATING":
       return { ...state, rating: action.payload };
-
     case "CATEGORY":
       let category = state.category;
       if (state.category.includes(action.payload)) {
