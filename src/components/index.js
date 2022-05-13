@@ -1,4 +1,3 @@
-export { Navbar } from "./homepage/Navbar";
-export { HeroSection } from "./homepage/HeroSection";
-export { FeatureProducts } from "./homepage/FeatureProducts";
-export { Footer } from "./homepage/Footer";
+export { Navbar } from "./Navbar/Navbar";
+export { HeroSection } from "./HeroSection/HeroSection";
+export { Footer } from "./Footer/Footer";

@@ -76,6 +76,9 @@ ul.menu {
   color: rgb(219, 215, 210);
   font-size: 2rem;
 }
+.fa-heart:active {
+  color: red;
+}
 
 .btn.btn-success {
   background-color: var(--green);

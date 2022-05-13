@@ -1,6 +1,6 @@
-export { CardPage } from "./CartPage/CardPage";
+export { CartPage } from "./CartPage/CartPage";
 export { HomePage } from "./HomePage/HomePage";
 export { LoginPage } from "./LoginPage/LoginPage";
-export { LogoutPage } from "./LogoutPage/LogoutPage";
+export { SignupPage } from "./SignupPage/SignupPage";
 export { ProductPage } from "./ProductPage/ProductPage";
 export { WishlistPage } from "./WishlistPage/WishlistPage";

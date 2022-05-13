@@ -9,14 +9,24 @@ import { filterByRating } from "../../utils/filterByRating";
 import { filterByCategory } from "../../utils/filterByCategory";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { useWishlist } from "../../context/wishlist/WishlistContext";
+import { useCart } from "../../context/cart/CartContext";
+
+import toast, { Toaster } from "react-hot-toast";
+
+const notify = () => toast.success("Added to Card!");
 
 const ProductPage = () => {
   const [state, dispatch] = useReducer(filterReducer, defaultFilterState);
+  const { wishlist, dispatchWishlist } = useWishlist();
+  const { cart, dispatchCart } = useCart();
   const [products, setProducts] = useState([]);
+  // console.log({ wishlist });
   useEffect(() => {
     (async () => {
-      const {data} = await axios.get("/api/products");
-      setProducts(data.products)
+      const { data } = await axios.get("/api/products");
+      setProducts(data.products);
     })();
   }, []);
 
@@ -31,6 +41,29 @@ const ProductPage = () => {
   const filteredByRating = filterByRating(filteredByPriceRange, rating);
 
   const filteredProducts = filterByCategory(filteredByRating, category);
+
+  // add to wishlist
+  const addToWishlist = (product) => {
+    dispatchWishlist({ type: "ADD_TO_WISHLIST", payload: product });
+  };
+
+  const removeFromWishlist = (productId) => {
+    dispatchWishlist({ type: "REMOVE_FROM_WISHLIST", payload: productId });
+  };
+
+  const isInWishlist = (productId) => {
+    return wishlist.some((product) => product._id === productId);
+  };
+
+  // Add to Cart
+  const addToCart = (product) => {
+    console.log("product: ", product);
+    dispatchCart({ type: "ADD_TO_CART", payload: product });
+  };
+
+  const removeFromCart = (productId) => {
+    dispatchWishlist({ type: "REMOVE_FROM_CART", payload: productId });
+  };
 
   return (
     <>
@@ -205,13 +238,29 @@ const ProductPage = () => {
               offerPercent,
               category,
               rating,
+              _id,
             } = item;
+            const isAddedToWishlist = isInWishlist(_id);
+
             return (
-              <div key={item._id} className="featured__product">
+              <div key={_id} className="featured__product">
                 <div className="card-vertical">
                   <img src={img} className="card-image" alt="card" />
                   <span className="card-badge">{badge}</span>
-                  <i className="fas fa-heart "></i>
+                  <i
+                    className="fas fa-heart"
+                    style={{
+                      color: isAddedToWishlist ? "tomato" : "silver",
+                    }}
+                    onClick={() => {
+                      if (isAddedToWishlist) {
+                        removeFromWishlist(_id);
+                      } else {
+                        addToWishlist(item);
+                      }
+                      
+                    }}
+                  ></i>
                   <div className="card-info">
                     <div className="card-title">
                       <div>
@@ -221,12 +270,33 @@ const ProductPage = () => {
                     <div className="price">
                       <p className="disc-price">{discountPrice}</p>
                       <p className="actual-price">{price}</p>
-                      <p className="price-percentage">{offerPercent}</p>
+                      <p class Name="price-percentage">
+                        {offerPercent}
+                      </p>
                     </div>
                   </div>
-                  <button className="btn btn-success add-cart">
-                    Add to Cart
-                  </button>
+                  {console.log(
+                    cart.some((cartItem) => item._id === cartItem._id)
+                  )}
+                  {cart.some((cartItem) => item._id === cartItem._id) ? (
+                    <Link to="/cart">
+                      <button className="btn btn-danger add-cart">
+                        Go to cart
+                      </button>
+                    </Link>
+                  ) : (
+                    // <div onClick={notify}>
+                    <button
+                      className="btn btn-success add-cart"
+                      onClick={() => {
+                        addToCart(item);
+                        notify();
+                      }}
+                    >
+                      Add to Cart
+                      <Toaster />
+                    </button>
+                  )}
                 </div>
               </div>
             );

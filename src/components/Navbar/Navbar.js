@@ -22,7 +22,7 @@ const Navbar = () => {
           <Link to="/wishlist">
             <img src="/img/heart.png" alt="heart" />
           </Link>
-          <Link to="/login">
+          <Link to="/signup">
             <img src="/img/user.png" alt="user" />
           </Link>
           <Link to="/cart">
