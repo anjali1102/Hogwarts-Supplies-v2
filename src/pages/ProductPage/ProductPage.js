@@ -285,18 +285,17 @@ const ProductPage = () => {
                       </button>
                     </Link>
                   ) : (
-                    // <div onClick={notify}>
                     <button
-                      className="btn btn-success add-cart"
-                      onClick={() => {
-                        addToCart(item);
-                        notify();
-                      }}
+                    className="btn btn-success add-cart"
+                    onClick={() => {
+                      addToCart(item);
+                      notify();
+                    }}
                     >
                       Add to Cart
-                      <Toaster />
                     </button>
                   )}
+                  
                 </div>
               </div>
             );

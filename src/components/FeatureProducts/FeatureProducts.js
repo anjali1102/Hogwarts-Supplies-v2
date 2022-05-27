@@ -2,8 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { products } from "../../backend/db/products";
 import "./FeatureProducts.css";
+import { useCart } from "../../context/cart/CartContext";
 
 const FeatureProducts = () => {
+  const notify = () => toast.success("Added to Card!");
+  const { cart, dispatchCart } = useCart();
+  const addToCart = (product) => {
+    console.log("product: ", product);
+    dispatchCart({ type: "ADD_TO_CART", payload: product });
+  };
   return (
     <section className="featured section" id="featured">
       <h2 className="section-title">FEATURED PRODUCTS</h2>
@@ -12,7 +19,7 @@ const FeatureProducts = () => {
       </Link>
 
       <div className="featured__container bd-grid">
-        {products.map((item) => {
+        {products.slice(0, 3).map((item) => {
           const { img, badge, title, discountPrice, price, offerPercent } =
             item;
           return (
@@ -32,7 +39,13 @@ const FeatureProducts = () => {
                     <p className="price-percentage">{offerPercent}</p>
                   </div>
                 </div>
-                <button className="btn btn-success add-cart">
+                <button
+                  className="btn btn-success add-cart"
+                  onClick={() => {
+                    addToCart(item);
+                    notify();
+                  }}
+                >
                   Add to Cart
                 </button>
               </div>
