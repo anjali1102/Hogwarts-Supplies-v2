@@ -1,30 +1,23 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import { Login } from "../LoginPage/LoginPage";
+import { signupHandler } from "../../backend/controllers/AuthController";
+import { useAuth } from "../../context/auth/AuthContext";
 
 const SignupPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [flag, setFlag] = useState(false);
-  // const [login, setLogin] = useState(true);
 
   const handleSubmit = (e) => {
-    e.prevent.default();
-    if (!name || !email || !password) {
-      setFlag(true);
-    } else {
-      setFlag(false);
-      localStorage.setItem("Email ", JSON.stringify(email));
-      localStorage.setItem("password ", JSON.stringify(password));
-
-      console.log("saved in local storage");
-      setLogin(!login);
-    }
+    signup();
   };
+
+  const { signup } = useAuth();
 
   return (
     <div className="center">
+      <h1>Signup</h1>
       <form onSubmit={handleSubmit}>
         <div className="txt_field">
           <input
@@ -52,20 +45,20 @@ const SignupPage = () => {
             Password<i className="fa fa-eye-slash icon"></i>
           </label>
         </div>
-        <button type="submit" value="Register" onClick={handleSubmit}>
+        <button
+          className="btn btn-success"
+          type="submit"
+          value="Register"
+          onClick={handleSubmit}
+        >
           SignUp
         </button>
         <div className="signup_link">
           Already have a account |
-          <Link to="login">
+          <Link to="/login">
             <b>Login</b>
           </Link>
         </div>
-        {/* {flag && (
-            <Alert color="primary" variant="danger">
-              Please Fill Every Field
-            </Alert>
-          )} */}
       </form>
     </div>
   );
