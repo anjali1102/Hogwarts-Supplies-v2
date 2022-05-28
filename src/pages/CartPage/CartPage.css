@@ -1,0 +1,22 @@
+*{
+    /* outline: 2px solid purple; */
+}
+
+.counter-countainer {
+  display: flex;
+  background-color: blue;
+  height: 100vh;
+}
+
+.counter-btn {
+  padding: 0.5rem;
+  background-color: var(--dank-green);
+  border: none;
+  cursor: pointer;
+}
+
+.minus-symb,
+.add-symb {
+  font-size: large;
+  color: white;
+}

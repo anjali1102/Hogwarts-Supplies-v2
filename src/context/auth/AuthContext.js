@@ -4,10 +4,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
-const token= localStorage.getItem("encoded-token")
-const userData=JSON.parse(localStorage.getItem("userData"));
-
-
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);

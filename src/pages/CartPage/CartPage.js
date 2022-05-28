@@ -1,4 +1,5 @@
 import React from "react";
+import "./CartPage.css";
 import useWishlist from "../../context/wishlist/WishlistContext";
 import { useCart } from "../../context/cart/CartContext";
 
@@ -7,8 +8,19 @@ const CartPage = () => {
   const removeFromCart = (productId) => {
     dispatchCart({ type: "REMOVE_FROM_CART", payload: productId });
   };
+  const increaseCartItem = (productId) => {
+    dispatchCart({ type: "INCREASE_CART_COUNTER", payload: productId });
+  };
+
+  const decreaseCartItem = (productId, quantity) => {
+    if (quantity <= 1) {
+      removeFromCart(productId);
+    } else {
+      dispatchCart({ type: "DECREASE_CART_COUNTER", payload: productId });
+    }
+  };
   return (
-    <div style={{ height: "70vh" }}>
+    <div className="counter-countainer">
       <div
         className="summary-container"
         style={{
@@ -55,6 +67,7 @@ const CartPage = () => {
           display: "flex",
           gap: "1rem",
           maxWidth: "1200px",
+          backgroundColor: "pink",
         }}
       >
         {cart.map((item) => {
@@ -67,6 +80,7 @@ const CartPage = () => {
             offerPercent,
             category,
             rating,
+            quantity,
             _id,
           } = item;
           return (
@@ -109,6 +123,19 @@ const CartPage = () => {
                     <p className="price-percentage">{offerPercent}</p>
                   </div>
                 </div>
+                <button
+                  className="counter-btn"
+                  onClick={() => increaseCartItem(_id)}
+                >
+                  <span className="add-symb">+</span>
+                </button>
+                <button
+                  className="counter-btn"
+                  onClick={() => decreaseCartItem(_id, quantity)}
+                >
+                  <span className="minus-symb">-</span>
+                </button>
+                <span>Quantity : {quantity}</span>
               </div>
             </div>
           );

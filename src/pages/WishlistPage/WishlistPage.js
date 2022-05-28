@@ -18,6 +18,8 @@ const WishlistPage = () => {
           display: "flex",
           gap: "1rem",
           maxWidth: "1200px",
+          height:"100vh",
+          flexWrap:"wrap",
         }}
       >
         {wishlist.map((item) => {

@@ -258,7 +258,6 @@ const ProductPage = () => {
                       } else {
                         addToWishlist(item);
                       }
-                      
                     }}
                   ></i>
                   <div className="card-info">
@@ -275,10 +274,10 @@ const ProductPage = () => {
                       </p>
                     </div>
                   </div>
-                  {console.log(
-                    cart.some((cartItem) => item._id === cartItem._id)
-                  )}
-                  {cart.some((cartItem) => item._id === cartItem._id) ? (
+                  {/* {console.log(
+                    cart?.some((cartItem) => item._id === cartItem._id)
+                  )} */}
+                  {cart?.some((cartItem) => item._id === cartItem._id) ? (
                     <Link to="/cart">
                       <button className="btn btn-danger add-cart">
                         Go to cart
@@ -286,16 +285,15 @@ const ProductPage = () => {
                     </Link>
                   ) : (
                     <button
-                    className="btn btn-success add-cart"
-                    onClick={() => {
-                      addToCart(item);
-                      notify();
-                    }}
+                      className="btn btn-success add-cart"
+                      onClick={() => {
+                        addToCart(item);
+                        notify();
+                      }}
                     >
                       Add to Cart
                     </button>
                   )}
-                  
                 </div>
               </div>
             );
