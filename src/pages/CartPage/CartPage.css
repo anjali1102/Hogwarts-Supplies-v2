@@ -1,22 +1,68 @@
-*{
-    /* outline: 2px solid purple; */
+.counter-countainer {
+  width: 100%;
+  height: 67vh;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 7fr 3fr;
 }
 
-.counter-countainer {
+.wrap-container2 {
+  justify-content: flex-start;
+  min-height: 20rem;
+  padding: 0 1rem;
+  flex-direction: column;
+  align-items: center;
   display: flex;
-  background-color: blue;
-  height: 100vh;
+}
+
+.cartCard {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem;
+}
+
+.card-image2 {
+  max-height: 10rem;
+  max-width: 10rem;
+  object-fit: contain;
+}
+
+.summary-container {
+  position: sticky;
+  top: 2rem;
+  margin: 1rem;
+}
+
+.remove-btn {
+  top: 10px;
+  position: absolute;
+  right: 10px;
+  background: white;
+  border-radius: 50%;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.remove-btn > .fa-times {
+  color: "tomato";
 }
 
 .counter-btn {
-  padding: 0.5rem;
   background-color: var(--dank-green);
-  border: none;
   cursor: pointer;
+  height: 2rem;
+  width: 4rem;
+  margin: 1rem;
 }
 
 .minus-symb,
 .add-symb {
   font-size: large;
   color: white;
+}
+
+.items-quantity {
+  padding: 10px;
 }

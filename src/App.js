@@ -17,12 +17,14 @@ import { Footer, Navbar } from "./components";
 import { useAuth } from "./context/auth/AuthContext";
 import { RequireAuth } from "./hooks/RequireAuth";
 import toast, { Toaster } from "react-hot-toast";
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   const { user } = useAuth();
   console.log(user);
   return (
-    <>
+    <div className="main-container2">
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -49,7 +51,7 @@ function App() {
       </Routes>
       <Toaster />
       <Footer />
-    </>
+    </div>
   );
 }
 

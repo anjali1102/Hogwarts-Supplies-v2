@@ -94,6 +94,22 @@ input[type="submit"]:hover {
   transition: 0.5s;
 }
 
+.signup_link {
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  color: var(--dark-gray);
+}
+
+.signup_link a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+.signup_link a:hover {
+  text-decoration: underline;
+}
+
 .checkbox_container {
   margin-bottom: 10px;
   padding-left: 5px;
@@ -104,7 +120,7 @@ input[type="submit"]:hover {
   cursor: pointer;
 }
 
-.main-login {
+.main-signup {
   display: grid;
   place-items: center;
   height: 67vh;

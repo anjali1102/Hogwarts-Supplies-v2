@@ -4,6 +4,10 @@ import { products } from "../../backend/db/products";
 import "./FeatureProducts.css";
 import { useCart } from "../../context/cart/CartContext";
 
+import toast, { Toaster } from "react-hot-toast";
+
+const notify = () => toast.success("Added to Card!");
+
 const FeatureProducts = () => {
   const notify = () => toast.success("Added to Card!");
   const { cart, dispatchCart } = useCart();
@@ -39,15 +43,23 @@ const FeatureProducts = () => {
                     <p className="price-percentage">{offerPercent}</p>
                   </div>
                 </div>
-                <button
-                  className="btn btn-success add-cart"
-                  onClick={() => {
-                    addToCart(item);
-                    notify();
-                  }}
-                >
-                  Add to Cart
-                </button>
+                {cart?.some((cartItem) => item._id === cartItem._id) ? (
+                  <Link to="/cart">
+                    <button className="btn btn-danger add-cart">
+                      Go to cart
+                    </button>
+                  </Link>
+                ) : (
+                  <button
+                    className="btn btn-success add-cart"
+                    onClick={() => {
+                      addToCart(item);
+                      notify();
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                )}
               </div>
             </div>
           );

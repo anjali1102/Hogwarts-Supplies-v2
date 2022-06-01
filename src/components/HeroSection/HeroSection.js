@@ -9,7 +9,7 @@ const HeroSection = () => {
         <div className="home__container">
           <div className="home__data">
             <h1 className="home__title">
-              <p style={{ lineHeight: "2rem" }}>NEW</p>
+              <p className="title-heading">NEW</p>
               <span>ARRIVALS</span>
             </h1>
             <Link to="/product" className="button">

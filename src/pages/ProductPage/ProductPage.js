@@ -15,14 +15,14 @@ import { useCart } from "../../context/cart/CartContext";
 
 import toast, { Toaster } from "react-hot-toast";
 
-const notify = () => toast.success("Added to Card!");
+const notify = () => toast.success("Added to Card 👜 !!");
+const notify2 = () => toast.success("Added to Wishlist 💗 !! ");
 
 const ProductPage = () => {
   const [state, dispatch] = useReducer(filterReducer, defaultFilterState);
   const { wishlist, dispatchWishlist } = useWishlist();
   const { cart, dispatchCart } = useCart();
   const [products, setProducts] = useState([]);
-  // console.log({ wishlist });
   useEffect(() => {
     (async () => {
       const { data } = await axios.get("/api/products");
@@ -72,6 +72,7 @@ const ProductPage = () => {
           <div className="filter-header">
             <h4>Filters</h4>
             <button
+              className="btn danger-outline"
               onClick={(e) => {
                 dispatch({ type: "CLEAR-FILTER", payload: e.target.value });
               }}
@@ -156,7 +157,7 @@ const ProductPage = () => {
                   }}
                   checked={rating === "4-AND-ABOVE"}
                 />
-                <span className="check-desc">4 Stars &amp; above</span>
+                <span className="check-desc">4 Stars &amp; under</span>
               </label>
               <label className="select-input">
                 <input
@@ -168,7 +169,7 @@ const ProductPage = () => {
                   }}
                   checked={rating === "3-AND-ABOVE"}
                 />
-                <span className="check-desc">3 Stars &amp; above</span>
+                <span className="check-desc">3 Stars &amp; under</span>
               </label>
               <label className="select-input">
                 <input
@@ -180,7 +181,7 @@ const ProductPage = () => {
                   }}
                   checked={rating === "2-AND-ABOVE"}
                 />
-                <span className="check-desc">2 Stars &amp; above</span>
+                <span className="check-desc">2 Stars &amp; under</span>
               </label>
               <label className="select-input">
                 <input
@@ -192,7 +193,7 @@ const ProductPage = () => {
                   }}
                   checked={rating === "1-AND-ABOVE"}
                 />
-                <span className="check-desc">1 Stars &amp; above</span>
+                <span className="check-desc">1 Stars &amp; under</span>
               </label>
             </div>
           </div>
@@ -257,6 +258,7 @@ const ProductPage = () => {
                         removeFromWishlist(_id);
                       } else {
                         addToWishlist(item);
+                        notify2();
                       }
                     }}
                   ></i>
@@ -274,9 +276,6 @@ const ProductPage = () => {
                       </p>
                     </div>
                   </div>
-                  {/* {console.log(
-                    cart?.some((cartItem) => item._id === cartItem._id)
-                  )} */}
                   {cart?.some((cartItem) => item._id === cartItem._id) ? (
                     <Link to="/cart">
                       <button className="btn btn-danger add-cart">

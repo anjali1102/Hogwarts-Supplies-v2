@@ -9,6 +9,7 @@ ul.menu {
 
 .main-product {
   display: flex;
+  width: 100%;
 }
 
 .section-title {

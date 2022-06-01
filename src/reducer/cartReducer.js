@@ -1,19 +1,28 @@
-import React from "react";
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
+      const product = action.payload;
+      console.log("cart in cartReducer", state);
+      const cart = state.cart;
+
+
       return {
         ...state,
         cart: [...state.cart, { ...action.payload, quantity: 1 }],
+        cart_total: state.cart_total + Number(product.discountPrice),
       };
+
     case "REMOVE_FROM_CART":
       return {
         ...state,
-        cart: state.cart.filter((item) => item._id !== action.payload),
+        cart: state.cart.filter((item) => item._id !== action.payload._id),
+        cart_total: state.cart_total - Number(action.payload.discountPrice) * action.payload.quantity,
       };
+
     case "INCREASE_CART_COUNTER":
-      const id = action.payload;
+      const id = action.payload._id;
       console.log("inside cart increase");
+
       return {
         ...state,
         cart: state.cart.map((item) => {
@@ -23,9 +32,12 @@ const cartReducer = (state, action) => {
             return item;
           }
         }),
+        
+        cart_total: state.cart_total + Number(action.payload.discountPrice),
       };
+
     case "DECREASE_CART_COUNTER":
-      const id2 = action.payload;
+      const id2 = action.payload._id;
       console.log("inside cart decrease");
       return {
         ...state,
@@ -36,6 +48,7 @@ const cartReducer = (state, action) => {
             return item;
           }
         }),
+        cart_total: state.cart_total - Number(action.payload.discountPrice),
       };
     default:
       return state;
