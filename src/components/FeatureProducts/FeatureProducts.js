@@ -6,13 +6,12 @@ import { useCart } from "../../context/cart/CartContext";
 
 import toast, { Toaster } from "react-hot-toast";
 
-const notify = () => toast.success("Added to Card!");
+const notifyCart = () => toast.success("Added to Card!");
 
 const FeatureProducts = () => {
-  const notify = () => toast.success("Added to Card!");
+  const notifyCart = () => toast.success("Added to Card!");
   const { cart, dispatchCart } = useCart();
   const addToCart = (product) => {
-    console.log("product: ", product);
     dispatchCart({ type: "ADD_TO_CART", payload: product });
   };
   return (
@@ -54,7 +53,7 @@ const FeatureProducts = () => {
                     className="btn btn-success add-cart"
                     onClick={() => {
                       addToCart(item);
-                      notify();
+                      notifyCart();
                     }}
                   >
                     Add to Cart

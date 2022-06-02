@@ -2,7 +2,6 @@ const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
       const product = action.payload;
-      console.log("cart in cartReducer", state);
       const cart = state.cart;
 
 
@@ -21,7 +20,6 @@ const cartReducer = (state, action) => {
 
     case "INCREASE_CART_COUNTER":
       const id = action.payload._id;
-      console.log("inside cart increase");
 
       return {
         ...state,
@@ -38,7 +36,6 @@ const cartReducer = (state, action) => {
 
     case "DECREASE_CART_COUNTER":
       const id2 = action.payload._id;
-      console.log("inside cart decrease");
       return {
         ...state,
         cart: state.cart.map((item) => {

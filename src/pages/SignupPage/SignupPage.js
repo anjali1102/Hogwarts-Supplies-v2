@@ -19,7 +19,7 @@ const SignupPage = () => {
   return (
     <div className="main-signup">
       <div className="center">
-        <h1>Signup</h1>
+        <h1>Sign Up</h1>
         <form onSubmit={handleSubmit}>
           <div className="txt_field">
             <input
@@ -51,7 +51,7 @@ const SignupPage = () => {
             value="Register"
             onClick={handleSubmit}
           >
-            SignUp
+           Create New Account
           </button>
           <div className="signup_link">
             Already have a account |

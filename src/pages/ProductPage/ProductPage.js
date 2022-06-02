@@ -15,8 +15,8 @@ import { useCart } from "../../context/cart/CartContext";
 
 import toast, { Toaster } from "react-hot-toast";
 
-const notify = () => toast.success("Added to Card 👜 !!");
-const notify2 = () => toast.success("Added to Wishlist 💗 !! ");
+const notifyCart = () => toast.success("Added to Card 👜 !!");
+const notifyWishlist = () => toast.success("Added to Wishlist 💗 !! ");
 
 const ProductPage = () => {
   const [state, dispatch] = useReducer(filterReducer, defaultFilterState);
@@ -57,7 +57,6 @@ const ProductPage = () => {
 
   // Add to Cart
   const addToCart = (product) => {
-    console.log("product: ", product);
     dispatchCart({ type: "ADD_TO_CART", payload: product });
   };
 
@@ -258,7 +257,7 @@ const ProductPage = () => {
                         removeFromWishlist(_id);
                       } else {
                         addToWishlist(item);
-                        notify2();
+                        notifyWishlist();
                       }
                     }}
                   ></i>
@@ -287,7 +286,7 @@ const ProductPage = () => {
                       className="btn btn-success add-cart"
                       onClick={() => {
                         addToCart(item);
-                        notify();
+                        notifyCart();
                       }}
                     >
                       Add to Cart

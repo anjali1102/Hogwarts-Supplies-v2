@@ -1,3 +1,21 @@
+.main-container2 {
+  height: 100vh;
+}
+
+.wishlist-container {
+  display: flex;
+  justify-content: center;
+  height:calc(100%-184px);
+}
+
+.wishlist-inner {
+  display: flex;
+  gap: 1rem;
+  max-width: 1200px;
+  height: 100vh;
+  flex-wrap: wrap;
+}
+
 .remove-btn {
   position: absolute;
   top: 10px;
@@ -14,21 +32,7 @@
   color: "tomato";
 }
 
-.wishlist-container {
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-}
-
-.wishlist-inner {
-  display: flex;
-  gap: 1rem;
-  max-width: 1200px;
-  height: 100vh;
-  flex-wrap: wrap;
-}
-
-.empty-wishlist-main{
+.empty-wishlist-main {
   display: flex;
   flex-direction: column;
   align-items: center;

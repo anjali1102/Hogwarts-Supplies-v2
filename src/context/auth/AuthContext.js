@@ -7,8 +7,8 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [token, setToken]=useState();
-  const navigate = useNavigate()
+  const [token, setToken] = useState();
+  const navigate = useNavigate();
   const signup = () => {
     setUser("anjali");
   };
@@ -19,14 +19,13 @@ export function AuthProvider({ children }) {
         password,
       })
       .then(function (response) {
-        console.log(response);
-        setUser(response.data.foundUser)
-        setUser(response.data.encodedToken)
-        
-        navigate("/")
+        setUser(response.data.foundUser);
+        setUser(response.data.encodedToken);
+
+        navigate("/");
       })
       .catch(function (error) {
-        console.log(error);
+        console.error(error);
       });
   };
   const logout = () => {

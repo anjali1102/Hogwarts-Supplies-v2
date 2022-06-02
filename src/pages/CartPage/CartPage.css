@@ -1,6 +1,5 @@
 .counter-countainer {
   width: 100%;
-  height: 67vh;
   display: grid;
   gap: 1rem;
   grid-template-columns: 7fr 3fr;
@@ -50,11 +49,12 @@
 }
 
 .counter-btn {
-  background-color: var(--dank-green);
+  background-color: wheat;
   cursor: pointer;
   height: 2rem;
-  width: 4rem;
+  width: 3rem;
   margin: 1rem;
+  border: none;
 }
 
 .minus-symb,

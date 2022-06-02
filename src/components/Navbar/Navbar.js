@@ -7,10 +7,7 @@ import { FaHeart, FaShoppingCart, FaUserCircle } from "react-icons/fa";
 const Navbar = () => {
   const { wishlist } = useWishlist();
   const { cart } = useCart();
-  // console.log("WishlistState ", wishlistState);
-  console.log("cart ", cart);
 
-  // console.log("wishlist", wishlist);
   return (
     <nav className="navbar_container">
       <div className="navbar_main">

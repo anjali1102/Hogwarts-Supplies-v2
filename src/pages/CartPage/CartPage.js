@@ -43,14 +43,7 @@ const CartPage = () => {
               <div className="cartCard">
                 <img src={img} className="card-image2" alt="card" />
                 <span className="card-badge">{badge}</span>
-                <button className="remove-btn">
-                  <i
-                    className="fas fa-times"
-                    onClick={() => {
-                      removeFromCart(item);
-                    }}
-                  ></i>
-                </button>
+
                 <div className="card-info">
                   <div className="card-title">
                     <div>
@@ -62,6 +55,7 @@ const CartPage = () => {
                     <p className="actual-price">{price}</p>
                     <p className="price-percentage">{offerPercent}</p>
                   </div>
+                    <p className="items-quantity"> Qty :{quantity}</p>
                 </div>
                 <button
                   className="counter-btn"
@@ -75,7 +69,16 @@ const CartPage = () => {
                 >
                   <span className="add-symb">+</span>
                 </button>
-                <span className="items-quantity">Quantity : {quantity}</span>
+                <div className="remove-btn">
+                  <button>
+                    <i
+                      className="fas fa-times"
+                      onClick={() => {
+                        removeFromCart(item);
+                      }}
+                    ></i>
+                  </button>
+                </div>
               </div>
             </div>
           );

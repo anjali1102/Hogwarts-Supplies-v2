@@ -7,20 +7,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { WishlistProvider } from "./context/wishlist/WishlistContext";
 import { CartProvider } from "./context/cart/CartContext";
 import { AuthProvider } from "./context/auth/AuthContext";
-// import { ProductProvider } from "./context/product/ProductContext";
+
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
-        {/* <ProductProvider> */}
           <CartProvider>
             <WishlistProvider>
               <App />
             </WishlistProvider>
           </CartProvider>
-        {/* </ProductProvider> */}
       </AuthProvider>
     </Router>
   </React.StrictMode>,

@@ -11,7 +11,6 @@ const WishlistPage = () => {
   };
 
   const addToCart = (product) => {
-    console.log("product: ", product);
     dispatchCart({ type: "ADD_TO_CART", payload: product });
   };
 
@@ -80,7 +79,7 @@ const WishlistPage = () => {
                       className="btn btn-success add-cart"
                       onClick={() => {
                         addToCart(item);
-                        notify();
+                        notifyCart();
                       }}
                     >
                       Add to Cart

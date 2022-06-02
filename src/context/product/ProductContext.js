@@ -14,7 +14,6 @@ const ProductProvider = ({ children }) => {
           method: "GET",
           url: "/api/products",
         });
-        console.log(res);
       } catch (e) {
         console.error(e);
       }
