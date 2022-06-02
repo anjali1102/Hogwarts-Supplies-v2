@@ -27,7 +27,6 @@ const CartPage = () => {
         {cart.map((item) => {
           const {
             img,
-            badge,
             title,
             discountPrice,
             price,
@@ -42,8 +41,6 @@ const CartPage = () => {
             <div key={_id} className="featured__product">
               <div className="cartCard">
                 <img src={img} className="card-image2" alt="card" />
-                <span className="card-badge">{badge}</span>
-
                 <div className="card-info">
                   <div className="card-title">
                     <div>
@@ -55,24 +52,24 @@ const CartPage = () => {
                     <p className="actual-price">{price}</p>
                     <p className="price-percentage">{offerPercent}</p>
                   </div>
-                    <p className="items-quantity"> Qty :{quantity}</p>
                 </div>
-                <button
-                  className="counter-btn"
-                  onClick={() => decreaseCartItem(item, quantity)}
-                >
-                  <span className="minus-symb">-</span>
-                </button>
-                <button
-                  className="counter-btn"
-                  onClick={() => increaseCartItem(item)}
-                >
-                  <span className="add-symb">+</span>
-                </button>
-                <div className="remove-btn">
-                  <button>
+                <div className="counter-section">
+                  <button
+                    className="counter-btn"
+                    onClick={() => decreaseCartItem(item, quantity)}
+                  >
+                    <span className="minus-symb">-</span>
+                  </button>
+                  <p className="items-quantity">{quantity}</p>
+                  <button
+                    className="counter-btn"
+                    onClick={() => increaseCartItem(item)}
+                  >
+                    <span className="add-symb">+</span>
+                  </button>
+                  <button className="remove-btn-cart">
                     <i
-                      className="fas fa-times"
+                      className=" fa fa-times"
                       onClick={() => {
                         removeFromCart(item);
                       }}
