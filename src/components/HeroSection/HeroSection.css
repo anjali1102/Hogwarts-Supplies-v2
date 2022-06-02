@@ -87,6 +87,10 @@ img {
   align-items: center;
 }
 
+.title-heading {
+  line-height: 2rem;
+}
+
 .show {
   right: 0;
 }
@@ -105,4 +109,3 @@ img {
 .button:hover {
   background-color: var(--dank-green);
 }
-

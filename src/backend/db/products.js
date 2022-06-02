@@ -13,9 +13,9 @@ export const products = [
     title: "Black Hoodie",
     discountPrice: "500",
     price: "1000",
-    offerPercent: "50%",
+    offerPercent: "50% OFF",
     category: "Tshirt",
-    ratings: "3.5"
+    ratings: "3.5",
   },
   {
     _id: uuid(),
@@ -24,9 +24,9 @@ export const products = [
     title: "Wrist Watch",
     discountPrice: "1000",
     price: "1500",
-    offerPercent: "50%",
+    offerPercent: "50% OFF",
     category: "Acessories",
-    ratings: "4.5"
+    ratings: "4.5",
   },
   {
     _id: uuid(),
@@ -35,9 +35,9 @@ export const products = [
     title: "Pen Drive",
     discountPrice: "300",
     price: "600",
-    offerPercent: "50%",
+    offerPercent: "50% OFF",
     category: "Acessories",
-    ratings: "5"
+    ratings: "5",
   },
   {
     _id: uuid(),
@@ -46,9 +46,9 @@ export const products = [
     title: "Pair of Socks",
     discountPrice: "1500",
     price: "2000",
-    offerPercent: "50%",
+    offerPercent: "50% OFF",
     category: "Acessories",
-    ratings: "2"
+    ratings: "2",
   },
   {
     _id: uuid(),
@@ -57,9 +57,9 @@ export const products = [
     title: "Stickers Pack",
     discountPrice: "1500",
     price: "2500",
-    offerPercent: "50%",
+    offerPercent: "50% OFF",
     category: "Toys",
-    ratings: "1"
+    ratings: "1",
   },
   {
     _id: uuid(),
@@ -68,9 +68,9 @@ export const products = [
     title: " Women Hand Bag",
     discountPrice: "500",
     price: "1000",
-    offerPercent: "50%",
+    offerPercent: "50% OFF",
     category: "Acessories",
-    ratings: "1.5"
+    ratings: "1.5",
   },
   {
     _id: uuid(),
@@ -79,8 +79,8 @@ export const products = [
     title: " Mini Toys Pack",
     discountPrice: "500",
     price: "1000",
-    offerPercent: "50%",
+    offerPercent: "50% OFF",
     category: "Acessories",
-    ratings: "3.5"
+    ratings: "3.5",
   },
 ];

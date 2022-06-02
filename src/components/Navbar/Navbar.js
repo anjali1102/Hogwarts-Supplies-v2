@@ -1,7 +1,13 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { useWishlist } from "../../context/wishlist/WishlistContext";
+import { useCart } from "../../context/cart/CartContext";
+import "./Navbar.css";
+import { FaHeart, FaShoppingCart, FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
+  const { wishlist } = useWishlist();
+  const { cart } = useCart();
+
   return (
     <nav className="navbar_container">
       <div className="navbar_main">
@@ -20,13 +26,15 @@ const Navbar = () => {
             </button>
           </div>
           <Link to="/wishlist">
-            <img src="/img/heart.png" alt="heart" />
+            <FaHeart size={25} />
+            <span className="count-notify">{wishlist.length}</span>
           </Link>
           <Link to="/signup">
-            <img src="/img/user.png" alt="user" />
+            <FaUserCircle size={25} />
           </Link>
           <Link to="/cart">
-            <img src="/img/cart.png" alt="cart" />
+            <FaShoppingCart size={25} />
+            <span className="count-notify">{cart.length}</span>
           </Link>
         </div>
       </div>

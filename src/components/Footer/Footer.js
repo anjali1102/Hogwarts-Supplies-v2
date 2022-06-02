@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
 const Footer = () => {
@@ -12,17 +11,17 @@ const Footer = () => {
         <ul className="f-connectme">
           <li>
             <a href="https://github.com/anjali1102" target="_blank">
-              <i className="fa fa-github"></i>
+              <img className="socials-icon" src="./img/linkedin-icon.png"></img>
             </a>
           </li>
           <li>
-            <a href="https://twitter.com/anjalii1102" target="_blank">
-              <i className="fa fa-twitter"></i>
+            <a href="https://hashnode.com/@anjalii" target="_blank">
+              <img className="socials-icon" src="./img/hashnode-icon.png"></img>
             </a>
           </li>
           <li>
             <a href="https://linkedin.com/in/anjali1102" target="_blank">
-              <i className="fa fa-linkedin"></i>
+              <img className="socials-icon" src="./img/github-icon.png"></img>
             </a>
           </li>
         </ul>

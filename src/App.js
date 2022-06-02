@@ -13,16 +13,17 @@ import { WishlistPage } from "./pages/WishlistPage/WishlistPage";
 import { CartPage } from "./pages/CartPage/CartPage";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { SignupPage } from "./pages/SignupPage/SignupPage";
-import { Footer, Navbar } from "./components";
+import { Navbar } from "./components";
 import { useAuth } from "./context/auth/AuthContext";
 import { RequireAuth } from "./hooks/RequireAuth";
 import toast, { Toaster } from "react-hot-toast";
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   const { user } = useAuth();
-  console.log(user);
   return (
-    <>
+    <div className="main-container2">
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -48,8 +49,7 @@ function App() {
         <Route path="/mockapi" element={<Mockman />} />
       </Routes>
       <Toaster />
-      <Footer />
-    </>
+    </div>
   );
 }
 

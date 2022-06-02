@@ -1,0 +1,66 @@
+.counter-countainer {
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 7fr 3fr;
+}
+
+.wrap-container2 {
+  justify-content: flex-start;
+  min-height: 20rem;
+  padding: 0 1rem;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.cartCard {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem;
+}
+
+.card-image2 {
+  max-height: 10rem;
+  max-width: 10rem;
+  object-fit: contain;
+}
+
+.summary-container {
+  position: sticky;
+  top: 2rem;
+  margin: 1rem;
+}
+
+.counter-section {
+  display: flex;
+}
+
+.remove-btn-cart {
+  background: none;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.counter-btn {
+  background-color: wheat;
+  cursor: pointer;
+  height: 2rem;
+  width: 3rem;
+  margin: 1rem;
+  border: none;
+}
+
+.minus-symb,
+.add-symb {
+  font-size: large;
+  color: white;
+}
+
+.items-quantity {
+  padding: 10px;
+}

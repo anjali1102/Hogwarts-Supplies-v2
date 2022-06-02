@@ -1,6 +1,6 @@
 import React from "react";
 import { products } from "../../backend/db/products";
-import { HeroSection } from "../../components";
+import { Footer, HeroSection } from "../../components";
 import FeatureProducts from "../../components/FeatureProducts/FeatureProducts";
 import "./HomePage.css";
 import "../../components/FeatureProducts/FeatureProducts.css";
@@ -11,6 +11,7 @@ const HomePage = () => {
     <div>
       <HeroSection />
       <FeatureProducts />
+      <Footer />
     </div>
   );
 };

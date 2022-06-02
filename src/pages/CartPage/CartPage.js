@@ -1,102 +1,46 @@
 import React from "react";
+import "./CartPage.css";
 import useWishlist from "../../context/wishlist/WishlistContext";
 import { useCart } from "../../context/cart/CartContext";
+import { cartReducer } from "../../reducer/cartReducer";
 
 const CartPage = () => {
-  const { cart, dispatchCart } = useCart();
+  const { cart, cart_total, dispatchCart } = useCart();
   const removeFromCart = (productId) => {
     dispatchCart({ type: "REMOVE_FROM_CART", payload: productId });
   };
-  return (
-    <div style={{ height: "70vh" }}>
-      <div
-        className="summary-container"
-        style={{
-          backgroundColor: "var(--white-color)",
-          padding: "1rem",
-          position: "fixed",
-          width: "300px",
-        }}
-      >
-        <div className="summary">
-          <div className="summary-total-items">
-            <span className="total-items"></span>
-            <h2>Price Details</h2>
-          </div>
-          <div className="summary-subtotal">
-            <div className="subtotal-title">
-              <h3>Subtotal</h3>
-            </div>
-            <div className="subtotal-value final-value">$130.00</div>
-          </div>
-          <div className="summary-total">
-            <div className="total-title">
-              <h3>Discount</h3>
-            </div>
-            <div className="total-value final-value">$-6</div>
-          </div>
-          <hr />
-          <div className="summary-total">
-            <div className="total-title">
-              <h3>Total</h3>
-            </div>
-            <div className="total-value final-value">$130.00</div>
-          </div>
-          <div className="summary-checkout">
-            <button className="checkout-cta btn btn-success">
-              Go to Secure Checkout
-            </button>
-          </div>
-        </div>
-      </div>
+  const increaseCartItem = (productId) => {
+    dispatchCart({ type: "INCREASE_CART_COUNTER", payload: productId });
+  };
 
-      <div
-        style={{
-          display: "flex",
-          gap: "1rem",
-          maxWidth: "1200px",
-        }}
-      >
+  const decreaseCartItem = (productId, quantity) => {
+    if (quantity <= 1) {
+      removeFromCart(productId);
+    } else {
+      dispatchCart({ type: "DECREASE_CART_COUNTER", payload: productId });
+    }
+  };
+
+  return (
+    <div className="counter-countainer">
+      <div className="wrap-container2">
         {cart.map((item) => {
           const {
             img,
-            badge,
             title,
             discountPrice,
             price,
             offerPercent,
             category,
             rating,
+            quantity,
             _id,
           } = item;
+
           return (
             <div key={_id} className="featured__product">
-              <div className="card-vertical">
-                <img src={img} className="card-image" alt="card" />
-                <span className="card-badge">{badge}</span>
-                <button
-                  style={{
-                    position: "absolute",
-                    top: "10px",
-                    right: "10px",
-                    background: "white",
-                    borderRadius: "50%",
-                    padding: "10px",
-                    border: "none",
-                    cursor: "pointer",
-                    outline: "none",
-                  }}
-                >
-                  <i
-                    className="fas fa-times"
-                    style={{
-                      color: "tomato",
-                    }}
-                    onClick={() => {
-                      removeFromCart(_id);
-                    }}
-                  ></i>
-                </button>
+              <div className="cartCard">
+                <img src={img} className="card-image2" alt="card" />
                 <div className="card-info">
                   <div className="card-title">
                     <div>
@@ -109,10 +53,64 @@ const CartPage = () => {
                     <p className="price-percentage">{offerPercent}</p>
                   </div>
                 </div>
+                <div className="counter-section">
+                  <button
+                    className="counter-btn"
+                    onClick={() => decreaseCartItem(item, quantity)}
+                  >
+                    <span className="minus-symb">-</span>
+                  </button>
+                  <p className="items-quantity">{quantity}</p>
+                  <button
+                    className="counter-btn"
+                    onClick={() => increaseCartItem(item)}
+                  >
+                    <span className="add-symb">+</span>
+                  </button>
+                  <button className="remove-btn-cart">
+                    <i
+                      className=" fa fa-times"
+                      onClick={() => {
+                        removeFromCart(item);
+                      }}
+                    ></i>
+                  </button>
+                </div>
               </div>
             </div>
           );
         })}
+      </div>
+
+      <div className="summary-container">
+        <div className="summary">
+          <div className="summary-total-items">
+            <span className="total-items"></span>
+            <h2>Price Details</h2>
+          </div>
+          <div className="summary-subtotal">
+            <div className="subtotal-title"></div>
+            <div className="subtotal-value final-value"></div>
+          </div>
+          <div className="summary-total">
+            <div className="total-title">
+              <h3>COUPON</h3>
+            </div>
+            <div className="total-value final-value">NONE</div>
+          </div>
+          <hr />
+          <div className="summary-total">
+            <div className="total-title">
+              <h3>Total</h3>
+            </div>
+            <div className="total-value final-value">₹{cart_total}</div>
+          </div>
+          <div className="summary-checkout">
+            <button className="checkout-cta btn btn-success">
+              Go to Secure Checkout
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
