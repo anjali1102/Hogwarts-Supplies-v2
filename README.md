@@ -33,3 +33,7 @@ $ npm start
 - React Context API + useReducer
 - React Router v6
 - Vanilla CSS integrated with Rapid UI Component Library
+
+
+![image](https://user-images.githubusercontent.com/56559378/174456005-d06a7cef-807c-4db4-8b90-01cc984ea54b.png)
+
