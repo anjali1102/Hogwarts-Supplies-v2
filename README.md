@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="src/img/harry.gif" height="100" width="100" alt="logo"/>
+  <img src="https://i.pinimg.com/originals/e5/e4/01/e5e401e35d609e217c19a24204360b8d.gif" height="150" width="180" alt="logo"/>
   
 # Hogwarts-Supplies
   
