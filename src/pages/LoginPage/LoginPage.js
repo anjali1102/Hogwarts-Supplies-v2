@@ -27,7 +27,7 @@ const LoginPage = () => {
     <div className="main-login">
       <div className="center">
         <h1>Login</h1>
-        <form>
+        <form onSubmit={(e) => loginHandler(e)}>
           <div className="txt_field">
             <input
               type="text"
