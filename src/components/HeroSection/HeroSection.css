@@ -19,6 +19,10 @@
   transform: translateY(-0.5rem);
 }
 
+.collection__data {
+  padding: 0.4rem;
+}
+
 .collection__img {
   width: 6.25rem;
 }
@@ -34,6 +38,10 @@
 .collection__subtitle {
   font-size: var(--h2-font-size);
   color: var(--dark-color);
+}
+
+.collection__view:hover {
+  color: var(--green);
 }
 
 .home__data {
