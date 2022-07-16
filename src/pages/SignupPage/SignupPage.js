@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { signupHandler } from "../../backend/controllers/AuthController";
-import { useAuth } from "../../context/auth/AuthContext";
+import { useAuth } from "../../context/index";
 import "./SignupPage.css";
 
 const SignupPage = () => {
@@ -51,7 +50,7 @@ const SignupPage = () => {
             value="Register"
             onClick={handleSubmit}
           >
-           Create New Account
+            Create New Account
           </button>
           <div className="signup_link">
             Already have a account |

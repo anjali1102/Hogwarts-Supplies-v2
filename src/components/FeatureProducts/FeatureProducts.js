@@ -1,12 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { products } from "../../backend/db/products";
 import "./FeatureProducts.css";
-import { useCart } from "../../context/cart/CartContext";
+import { useCart, useAuth } from "../../context/index";
 
-import toast, { Toaster } from "react-hot-toast";
-
-const notifyCart = () => toast.success("Added to Card!");
+import toast from "react-hot-toast";
 
 const FeatureProducts = () => {
   const notifyCart = () => toast.success("Added to Card!");
@@ -14,6 +12,12 @@ const FeatureProducts = () => {
   const addToCart = (product) => {
     dispatchCart({ type: "ADD_TO_CART", payload: product });
   };
+  const {
+    user: { token },
+  } = useAuth();
+
+  const navigate = useNavigate();
+
   return (
     <section className="featured section" id="featured">
       <h2 className="section-title">FEATURED PRODUCTS</h2>
@@ -52,8 +56,12 @@ const FeatureProducts = () => {
                   <button
                     className="btn btn-success add-cart"
                     onClick={() => {
-                      addToCart(item);
-                      notifyCart();
+                      if (!token) {
+                        navigate("/login");
+                      } else {
+                        addToCart(item);
+                        notifyCart();
+                      }
                     }}
                   >
                     Add to Cart
@@ -68,4 +76,4 @@ const FeatureProducts = () => {
   );
 };
 
-export default FeatureProducts;
+export { FeatureProducts };

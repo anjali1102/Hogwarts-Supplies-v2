@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
-import { useWishlist } from "../../context/wishlist/WishlistContext";
-import { useCart } from "../../context/cart/CartContext";
 import "./Navbar.css";
+import { useWishlist, useCart, useAuth } from "../../context/index";
 import { FaHeart, FaShoppingCart, FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
   const { wishlist } = useWishlist();
   const { cart } = useCart();
+
+  const {
+    user: { token },
+    logout,
+  } = useAuth();
 
   return (
     <nav className="navbar_container">
@@ -29,13 +33,24 @@ const Navbar = () => {
             <FaHeart size={25} />
             <span className="count-notify">{wishlist.length}</span>
           </Link>
-          <Link to="/signup">
-            <FaUserCircle size={25} />
-          </Link>
           <Link to="/cart">
             <FaShoppingCart size={25} />
             <span className="count-notify">{cart.length}</span>
           </Link>
+          {token ? (
+            <button
+              className="btn btn-danger"
+              onClick={() => {
+                logout();
+              }}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link to="/signup">
+              <FaUserCircle size={25} />
+            </Link>
+          )}
         </div>
       </div>
     </nav>

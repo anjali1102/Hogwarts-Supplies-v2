@@ -1,18 +1,16 @@
-import React, { useReducer } from "react";
-import "./ProductPage.css";
-import { defaultFilterState } from "../../reducer/defaultFilterState";
-import { filterReducer } from "../../reducer/filterReducer";
-import { getMinMaxPrice } from "../../utils/minMaxPrice";
-import { filterbySort } from "../../utils/filterbySort";
-import { filterByPriceRange } from "../../utils/filterByPriceRange";
-import { filterByRating } from "../../utils/filterByRating";
-import { filterByCategory } from "../../utils/filterByCategory";
-import { useEffect, useState } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { useWishlist } from "../../context/wishlist/WishlistContext";
-import { useCart } from "../../context/cart/CartContext";
-
+import "./ProductPage.css";
+import { Link, useNavigate } from "react-router-dom";
+import { defaultFilterState, filterReducer } from "../../reducer/index";
+import {
+  getMinMaxPrice,
+  filterbySort,
+  filterByPriceRange,
+  filterByRating,
+  filterByCategory,
+} from "../../utils/index";
+import { useWishlist, useCart, useAuth } from "../../context/index";
 import toast, { Toaster } from "react-hot-toast";
 import { BounceLoader } from "react-spinners";
 import { css } from "@emotion/react";
@@ -26,6 +24,11 @@ const ProductPage = () => {
   const { wishlist, dispatchWishlist } = useWishlist();
   const { cart, dispatchCart } = useCart();
   const [products, setProducts] = useState([]);
+  const {
+    user: { token },
+  } = useAuth();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -42,7 +45,6 @@ const ProductPage = () => {
     }, 2500);
   }, []);
 
-  // Can be a string as well. Need to ensure each key-value pair ends with ;
   const override = css`
     position: absolute;
     top: 50%;
@@ -51,20 +53,21 @@ const ProductPage = () => {
   `;
 
   const { minPrice, maxPrice } = getMinMaxPrice(products);
-
   const { priceSlider, category, rating, sortby } = state;
 
   const filteredBySort = filterbySort(products, sortby);
-
   const filteredByPriceRange = filterByPriceRange(filteredBySort, priceSlider);
-
   const filteredByRating = filterByRating(filteredByPriceRange, rating);
-
   const filteredProducts = filterByCategory(filteredByRating, category);
 
   // add to wishlist
   const addToWishlist = (product) => {
-    dispatchWishlist({ type: "ADD_TO_WISHLIST", payload: product });
+    if (!token) {
+      navigate("/login");
+    } else {
+      dispatchWishlist({ type: "ADD_TO_WISHLIST", payload: product });
+      notifyWishlist();
+    }
   };
 
   const removeFromWishlist = (productId) => {
@@ -77,7 +80,12 @@ const ProductPage = () => {
 
   // Add to Cart
   const addToCart = (product) => {
-    dispatchCart({ type: "ADD_TO_CART", payload: product });
+    if (!token) {
+      navigate("/login");
+    } else {
+      dispatchCart({ type: "ADD_TO_CART", payload: product });
+      notifyCart();
+    }
   };
 
   const removeFromCart = (productId) => {
@@ -280,7 +288,6 @@ const ProductPage = () => {
                           removeFromWishlist(_id);
                         } else {
                           addToWishlist(item);
-                          notifyWishlist();
                         }
                       }}
                     ></i>
@@ -309,7 +316,6 @@ const ProductPage = () => {
                         className="btn btn-success add-cart"
                         onClick={() => {
                           addToCart(item);
-                          notifyCart();
                         }}
                       >
                         Add to Cart

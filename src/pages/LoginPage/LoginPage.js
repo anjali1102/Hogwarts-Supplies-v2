@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./LoginPage.css";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/auth/AuthContext";
+import "./LoginPage.css";
+import { useAuth } from "../../context/index";
 import toast from "react-hot-toast";
 
 const notifyLogin = () => toast.success("Successfully Login !!");
@@ -12,7 +12,6 @@ const LoginPage = () => {
 
   const loginHandler = (e) => {
     e.preventDefault();
-    console.log(email, password);
     login(email, password);
   };
 

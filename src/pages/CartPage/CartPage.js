@@ -1,8 +1,6 @@
 import React from "react";
 import "./CartPage.css";
-import useWishlist from "../../context/wishlist/WishlistContext";
-import { useCart } from "../../context/cart/CartContext";
-import { cartReducer } from "../../reducer/cartReducer";
+import { useCart } from "../../context/index";
 
 const CartPage = () => {
   const { cart, cart_total, dispatchCart } = useCart();

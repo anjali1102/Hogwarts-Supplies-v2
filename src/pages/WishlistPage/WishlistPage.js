@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
-import { useWishlist } from "../../context/wishlist/WishlistContext";
-import { useCart } from "../../context/cart/CartContext";
+import { useWishlist, useCart } from "../../context/index";
 import "./WishlistPage.css";
+import toast from "react-hot-toast";
 
 const WishlistPage = () => {
+  const notifyCart = () => toast.success("Added to Cart 👜 !! ");
+
   const { wishlist, dispatchWishlist } = useWishlist();
   const { cart, dispatchCart } = useCart();
+
   const removeFromWishlist = (productId) => {
     dispatchWishlist({ type: "REMOVE_FROM_WISHLIST", payload: productId });
   };

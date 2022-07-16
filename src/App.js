@@ -1,22 +1,18 @@
 import "./App.css";
 import Mockman from "mockman-js";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-  Link,
-} from "react-router-dom";
-import { HomePage } from "./pages/HomePage/HomePage";
-import { ProductPage } from "./pages/ProductPage/ProductPage";
-import { WishlistPage } from "./pages/WishlistPage/WishlistPage";
-import { CartPage } from "./pages/CartPage/CartPage";
-import { LoginPage } from "./pages/LoginPage/LoginPage";
-import { SignupPage } from "./pages/SignupPage/SignupPage";
-import { Navbar } from "./components";
+  HomePage,
+  ProductPage,
+  WishlistPage,
+  CartPage,
+  LoginPage,
+  SignupPage,
+} from "./pages/index";
+import { Navbar } from "./components/index";
 import { useAuth } from "./context/auth/AuthContext";
 import { RequireAuth } from "./hooks/RequireAuth";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import ScrollToTop from "./ScrollToTop";
 
 function App() {
