@@ -4,13 +4,14 @@ import { useAuth } from "../../context/index";
 import "./SignupPage.css";
 
 const SignupPage = () => {
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [flag, setFlag] = useState(false);
 
   const handleSubmit = (e) => {
-    signup();
+    e.preventDefault();
+    signup(email, password, firstName, lastName);
   };
 
   const { signup } = useAuth();
@@ -23,10 +24,18 @@ const SignupPage = () => {
           <div className="txt_field">
             <input
               type="text"
-              onChange={(event) => setName(event.target.value)}
+              onChange={(event) => setFirstName(event.target.value)}
               required
             />
-            <label>Enter your Full Name</label>
+            <label> First Name</label>
+          </div>
+          <div className="txt_field">
+            <input
+              type="text"
+              onChange={(event) => setLastName(event.target.value)}
+              required
+            />
+            <label>Last Name</label>
           </div>
           <div className="txt_field">
             <input
@@ -44,12 +53,7 @@ const SignupPage = () => {
             />
             <label>Password</label>
           </div>
-          <button
-            className="btn btn-success"
-            type="submit"
-            value="Register"
-            onClick={handleSubmit}
-          >
+          <button className="btn btn-success" type="submit" value="Register">
             Create New Account
           </button>
           <div className="signup_link">
