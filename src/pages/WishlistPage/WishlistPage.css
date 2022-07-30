@@ -5,7 +5,7 @@
 .wishlist-container {
   display: flex;
   justify-content: center;
-  height:calc(100%-184px);
+  /* height: calc(100%-184px); */
 }
 
 .wishlist-inner {
@@ -46,4 +46,19 @@
 .wishlist-btn {
   display: inline-block;
   text-align: center;
+}
+
+.link-highlight {
+  color: red;
+  text-decoration-line: underline;
+}
+
+.wishlist-empty-container {
+  height: 100vh;
+  padding: 6rem;
+}
+
+.wishlist-empty-text {
+  text-align: center;
+  justify-content: center;
 }

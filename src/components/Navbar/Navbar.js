@@ -31,11 +31,13 @@ const Navbar = () => {
           </div>
           <Link to="/wishlist">
             <FaHeart size={25} />
-            <span className="count-notify">{wishlist.length}</span>
+            {token ? (
+              <span className="count-notify">{wishlist.length}</span>
+            ) : null}
           </Link>
           <Link to="/cart">
             <FaShoppingCart size={25} />
-            <span className="count-notify">{cart.length}</span>
+            {token ? <span className="count-notify">{cart.length}</span> : null}
           </Link>
           {token ? (
             <button

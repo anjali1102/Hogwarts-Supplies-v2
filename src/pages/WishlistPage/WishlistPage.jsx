@@ -22,12 +22,23 @@ const WishlistPage = () => {
       {wishlist.length === 0 ? (
         <div className="empty-wishlist-main">
           <div className="empty-wishlist-head">
-            Nothing here <i className="fa fa-heart-broken"></i>
-            Let's Add Something !
+            <div className="wishlist-empty-container">
+              <img
+                src="img/wishlist-empty.jpg"
+                alt="empty-wishlist"
+                width="400"
+                className="wishlist-empty"
+              />
+              <h3 className="wishlist-empty-text">
+                Nothing Here{" "}
+                <div>
+                  <Link to="/product" className="link-highlight">
+                    Explore Products
+                  </Link>
+                </div>
+              </h3>
+            </div>
           </div>
-          <Link to="/product" className="btn btn-success wishlist-btn">
-            Return to Shop
-          </Link>
         </div>
       ) : (
         <div className="wishlist-inner">

@@ -8,6 +8,8 @@ import {
   CartPage,
   LoginPage,
   SignupPage,
+  CheckoutPage,
+  PaymentSucessPage,
 } from "./pages/index";
 import { Navbar } from "./components/index";
 import { useAuth } from "./context/auth/AuthContext";
@@ -40,6 +42,22 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route
+          path="/checkout"
+          element={
+            <RequireAuth>
+              <CheckoutPage />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/success"
+          element={
+            <RequireAuth>
+              <PaymentSucessPage />
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/mockapi" element={<Mockman />} />

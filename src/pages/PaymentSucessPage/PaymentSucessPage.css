@@ -1,0 +1,13 @@
+.paySucess-main {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.paySucess-content {
+  padding: 10rem;
+}
+
+.paySucess-btn {
+  width: 1rem;
+}

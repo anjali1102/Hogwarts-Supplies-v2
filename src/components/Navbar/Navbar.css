@@ -25,6 +25,7 @@
 .search {
   width: 25rem;
   display: flex;
+  visibility: hidden;
 }
 
 @media screen and (max-width: 48rem) {

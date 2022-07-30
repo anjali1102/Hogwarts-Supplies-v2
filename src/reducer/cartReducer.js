@@ -3,8 +3,6 @@ const cartReducer = (state, action) => {
     case "ADD_TO_CART":
       const product = action.payload;
       const cart = state.cart;
-
-
       return {
         ...state,
         cart: [...state.cart, { ...action.payload, quantity: 1 }],
@@ -15,12 +13,13 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cart: state.cart.filter((item) => item._id !== action.payload._id),
-        cart_total: state.cart_total - Number(action.payload.discountPrice) * action.payload.quantity,
+        cart_total:
+          state.cart_total -
+          Number(action.payload.discountPrice) * action.payload.quantity,
       };
 
     case "INCREASE_CART_COUNTER":
       const id = action.payload._id;
-
       return {
         ...state,
         cart: state.cart.map((item) => {
@@ -30,7 +29,7 @@ const cartReducer = (state, action) => {
             return item;
           }
         }),
-        
+
         cart_total: state.cart_total + Number(action.payload.discountPrice),
       };
 
@@ -46,6 +45,12 @@ const cartReducer = (state, action) => {
           }
         }),
         cart_total: state.cart_total - Number(action.payload.discountPrice),
+      };
+
+    case "CLEAR_CART":
+      return {
+        ...state,
+        cart: action.payload,
       };
     default:
       return state;

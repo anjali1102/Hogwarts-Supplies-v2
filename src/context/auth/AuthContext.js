@@ -1,12 +1,23 @@
 import axios from "axios";
 import { useState, useContext, createContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const AuthContext = createContext();
 
+const userData = JSON.parse(localStorage.getItem("userData")) || {
+  token: "",
+  user: "",
+};
+
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState({ token: "", user: "" });
+  const [user, setUser] = useState({
+    token: userData?.token,
+    user: userData?.user,
+  });
+
   const navigate = useNavigate();
+  const location = useLocation();
   const signup = async (email, password, firstName, lastName) => {
     try {
       console.log(email, password, firstName, lastName);
@@ -23,9 +34,10 @@ export function AuthProvider({ children }) {
             user: response.data.createdUser,
           };
           setUser(userData);
-          console.log(userData);
-          localStorage.setItem("token", JSON.stringify(userData.token));
-          navigate("/");
+          // console.log(userData);
+          localStorage.setItem("userData", JSON.stringify(userData));
+          console.log(location);
+          navigate(location?.state?.from?.pathname || "/", { replace: true });
         });
     } catch (error) {
       console.log(error);
@@ -44,8 +56,9 @@ export function AuthProvider({ children }) {
         };
 
         setUser(userData);
-        localStorage.setItem("token", JSON.stringify(userData.token));
-        navigate("/");
+        localStorage.setItem("userData", JSON.stringify(userData));
+        console.log(location);
+        navigate(location?.state?.from?.pathname || "/", { replace: true });
       })
       .catch(function (error) {
         const { status } = error.response;
@@ -57,15 +70,16 @@ export function AuthProvider({ children }) {
       });
   };
   const logout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("userData");
     setUser({ token: "", user: "" });
     navigate("/");
+    // navigate(location?.state?.from?.pathname || "/", { replace: true });
   };
 
-  useEffect(() => {
-    const userToken = localStorage.getItem("token");
-    userToken&&setUser({token:userToken, user:""})
-  }, []);
+  // useEffect(() => {
+  //   const userData = localStorage.getItem("userData");
+  //   userData && setUser({ token: userData.token, user: "" });
+  // }, []);
 
   return (
     <AuthContext.Provider value={{ user, signup, login, logout }}>

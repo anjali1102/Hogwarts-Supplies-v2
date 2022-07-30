@@ -6,12 +6,12 @@
 }
 
 .wrap-container2 {
-  display: flex;
-  align-items: center;
+  overflow-y: hidden;
   justify-content: center;
-  min-height: 20rem;
   padding: 0 1rem;
   flex-direction: column;
+  align-items: center;
+  display: flex;
 }
 
 .cartCard {
@@ -68,44 +68,4 @@
 .link-highlight {
   color: red;
   text-decoration-line: underline;
-}
-
-.card {
-  position: relative;
-  border: 1px solid black;
-  border-radius: 5px;
-  margin: 1rem;
-  word-wrap: break-word;
-  box-shadow: 0 6px 1.25rem 0 gray;
-}
-
-.card-container {
-  display: flex;
-  overflow-y: auto;
-}
-
-.card-title {
-  margin-top: 0.75rem;
-  margin-bottom: 5px;
-  padding: 5px 0px 3px 1rem;
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: black;
-}
-
-.fs-2 {
-  font-size: 1.2rem;
-}
-
-.pb-1 {
-  padding-bottom: 0.5rem;
-}
-
-.pl-2 {
-  padding-left: 1rem;
-}
-
-.Psummary-txt {
-  font-size: larger;
-  color: brown;
 }
