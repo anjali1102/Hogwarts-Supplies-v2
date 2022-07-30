@@ -20,7 +20,6 @@ $ npm start
 - Home page
 - Product listing page
 - Filter and sort products
-- Search product
 - Individual product page
 - Cart Managment
 - Wishlist managment
